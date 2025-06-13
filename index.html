@@ -49,6 +49,7 @@
             padding: 20px;
             margin-bottom: 30px;
             background: #fafafa;
+            position: relative;
         }
         
         .card-header {
@@ -60,15 +61,12 @@
             border-bottom: 1px solid #ddd;
         }
         
-        .card-number {
-            background: #3498db;
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .logo {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #bbb;
+            font-size: 18px;
             font-weight: bold;
         }
         
@@ -95,13 +93,11 @@
             color: #2c3e50;
             margin-bottom: 10px;
             font-size: 16px;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 5px;
         }
         
         .checkbox-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 8px;
             margin-bottom: 15px;
         }
@@ -109,7 +105,7 @@
         .checkbox-item {
             display: flex;
             align-items: center;
-            padding: 5px;
+            padding: 2px;
         }
         
         .checkbox-item input[type="checkbox"] {
@@ -123,22 +119,28 @@
             user-select: none;
         }
         
-        .remarks-section textarea {
+        .remarks-section {
+            margin-top: 15px;
+        }
+        
+        .remarks-section input {
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            resize: vertical;
-            min-height: 60px;
-            font-family: Arial, sans-serif;
+            margin-top: 5px;
+        }
+        
+        .special-request {
+            margin-top: 15px;
         }
         
         .special-request input {
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            margin-top: 10px;
+            margin-top: 5px;
         }
         
         .submit-section {
@@ -172,12 +174,6 @@
             cursor: not-allowed;
         }
         
-        .logo {
-            text-align: right;
-            color: #bbb;
-            font-size: 12px;
-        }
-        
         @media (max-width: 600px) {
             .guest-info {
                 grid-template-columns: 1fr;
@@ -202,46 +198,49 @@
         
         <div class="form-container">
             <form id="breakfastForm">
-                <!-- First Menu Card -->
+                <!-- Menu Card -->
                 <div class="menu-card">
-                    <div class="card-header">
-                        <div class="card-number">1</div>
-                        <div class="logo">PANACEA</div>
-                    </div>
+                    <div class="logo">PANACEA</div>
                     
                     <div class="guest-info">
-                        <input type="date" name="date1" placeholder="Date" required>
-                        <input type="text" name="villa1" placeholder="Villa" required>
-                        <input type="time" name="time1" placeholder="Time" required>
+                        <input type="date" name="date" placeholder="Date" required>
+                        <input type="text" name="firstName" placeholder="First Name" required>
+                        <input type="text" name="villa" placeholder="Villa">
+                        <input type="time" name="time" placeholder="Time">
                     </div>
                     
                     <div class="section">
-                        <div class="section-title">Western Breakfast Selection - Eggs any style</div>
+                        <div class="section-title">Western Breakfast Selection<br>Eggs any style</div>
                         <div class="checkbox-grid">
                             <div class="checkbox-item">
-                                <input type="checkbox" id="poached1" name="eggs1" value="poached">
-                                <label for="poached1">Poached</label>
+                                <input type="checkbox" id="poached" name="eggs" value="Poached">
+                                <label for="poached">Poached</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="scrambled1" name="eggs1" value="scrambled">
-                                <label for="scrambled1">Scrambled</label>
+                                <input type="checkbox" id="scrambled" name="eggs" value="Scrambled">
+                                <label for="scrambled">Scrambled</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="sunny1" name="eggs1" value="sunny">
-                                <label for="sunny1">Sunny Side-Up</label>
+                                <input type="checkbox" id="sunny" name="eggs" value="Sunny Side-Up">
+                                <label for="sunny">Sunny Side-Up</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="boiled1" name="eggs1" value="boiled">
-                                <label for="boiled1">Boiled</label>
+                                <input type="checkbox" id="boiled" name="eggs" value="Boiled">
+                                <label for="boiled">Boiled</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="omelet1" name="eggs1" value="omelet">
-                                <label for="omelet1">Omelet</label>
+                                <input type="checkbox" id="omelet" name="eggs" value="Omelet">
+                                <label for="omelet">Omelet</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="benedict1" name="eggs1" value="benedict">
-                                <label for="benedict1">Eggs Benedict</label>
+                                <input type="checkbox" id="benedict" name="eggs" value="Eggs Benedict">
+                                <label for="benedict">Eggs Benedict</label>
                             </div>
+                        </div>
+                        
+                        <div class="remarks-section">
+                            <label for="remarks"><strong>Remarks:</strong></label>
+                            <input type="text" id="remarks" name="remarks" placeholder="Any special instructions...">
                         </div>
                     </div>
                     
@@ -249,48 +248,48 @@
                         <div class="section-title">Traditional</div>
                         <div class="checkbox-grid">
                             <div class="checkbox-item">
-                                <input type="checkbox" id="bacon1" name="traditional1" value="bacon">
-                                <label for="bacon1">Bacon</label>
+                                <input type="checkbox" id="bacon" name="traditional" value="Bacon">
+                                <label for="bacon">Bacon</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="ham1" name="traditional1" value="ham">
-                                <label for="ham1">Ham</label>
+                                <input type="checkbox" id="ham" name="traditional" value="Ham">
+                                <label for="ham">Ham</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="sausage1" name="traditional1" value="sausage">
-                                <label for="sausage1">Sausage</label>
+                                <input type="checkbox" id="sausage" name="traditional" value="Sausage">
+                                <label for="sausage">Sausage</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="tomatoes1" name="traditional1" value="tomatoes">
-                                <label for="tomatoes1">Grilled Tomatoes</label>
+                                <input type="checkbox" id="grilled-tomatoes" name="traditional" value="Grilled Tomatoes">
+                                <label for="grilled-tomatoes">Grilled Tomatoes</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="mushrooms1" name="traditional1" value="mushrooms">
-                                <label for="mushrooms1">Mushrooms</label>
+                                <input type="checkbox" id="mushrooms" name="traditional" value="Mushrooms">
+                                <label for="mushrooms">Mushrooms</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="beans1" name="traditional1" value="beans">
-                                <label for="beans1">Baked Beans</label>
+                                <input type="checkbox" id="baked-beans" name="traditional" value="Baked Beans">
+                                <label for="baked-beans">Baked Beans</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="potatoes1" name="traditional1" value="potatoes">
-                                <label for="potatoes1">Potatoes</label>
+                                <input type="checkbox" id="potatoes" name="traditional" value="Potatoes">
+                                <label for="potatoes">Potatoes</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="plain-pancakes1" name="traditional1" value="plain-pancakes">
-                                <label for="plain-pancakes1">Plain Pancakes</label>
+                                <input type="checkbox" id="plain-pancakes" name="traditional" value="Plain Pancakes">
+                                <label for="plain-pancakes">Plain Pancakes</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="banana-pancakes1" name="traditional1" value="banana-pancakes">
-                                <label for="banana-pancakes1">Banana Pancakes</label>
+                                <input type="checkbox" id="banana-pancakes" name="traditional" value="Banana Pancakes">
+                                <label for="banana-pancakes">Banana Pancakes</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="french-toast1" name="traditional1" value="french-toast">
-                                <label for="french-toast1">French Toast</label>
+                                <input type="checkbox" id="french-toast" name="traditional" value="French Toast">
+                                <label for="french-toast">French Toast</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="cheese1" name="traditional1" value="cheese">
-                                <label for="cheese1">Imported hard and soft cheese</label>
+                                <input type="checkbox" id="cheese" name="traditional" value="Imported hard and soft cheese">
+                                <label for="cheese">Imported hard and soft cheese</label>
                             </div>
                         </div>
                     </div>
@@ -299,40 +298,40 @@
                         <div class="section-title">Bakery</div>
                         <div class="checkbox-grid">
                             <div class="checkbox-item">
-                                <input type="checkbox" id="croissant1" name="bakery1" value="croissant">
-                                <label for="croissant1">Croissant</label>
+                                <input type="checkbox" id="croissant" name="bakery" value="Croissant">
+                                <label for="croissant">Croissant</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="danish1" name="bakery1" value="danish">
-                                <label for="danish1">Danish</label>
+                                <input type="checkbox" id="danish" name="bakery" value="Danish">
+                                <label for="danish">Danish</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="pain-au-chocolat1" name="bakery1" value="pain-au-chocolat">
-                                <label for="pain-au-chocolat1">Pain Au Chocolat</label>
+                                <input type="checkbox" id="pain-au-chocolat" name="bakery" value="Pain Au Chocolat">
+                                <label for="pain-au-chocolat">Pain Au Chocolat</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="muffins1" name="bakery1" value="muffins">
-                                <label for="muffins1">Fruits and Oat muffins</label>
+                                <input type="checkbox" id="muffins" name="bakery" value="Fruits and Oat muffins">
+                                <label for="muffins">Fruits and Oat muffins</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="brioche1" name="bakery1" value="brioche">
-                                <label for="brioche1">Brioche Toast</label>
+                                <input type="checkbox" id="brioche" name="bakery" value="Brioche Toast">
+                                <label for="brioche">Brioche Toast</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="whole-wheat1" name="bakery1" value="whole-wheat">
-                                <label for="whole-wheat1">Whole wheat toast</label>
+                                <input type="checkbox" id="whole-wheat" name="bakery" value="Whole wheat toast">
+                                <label for="whole-wheat">Whole wheat toast</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="multi-grain1" name="bakery1" value="multi-grain">
-                                <label for="multi-grain1">Multi Grain Toast</label>
+                                <input type="checkbox" id="multi-grain" name="bakery" value="Multi Grain Toast">
+                                <label for="multi-grain">Multi Grain Toast</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="homemade-jams1" name="bakery1" value="homemade-jams">
-                                <label for="homemade-jams1">Homemade Jams</label>
+                                <input type="checkbox" id="homemade-jams" name="bakery" value="Homemade Jams">
+                                <label for="homemade-jams">Homemade Jams</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="waffles1" name="bakery1" value="waffles">
-                                <label for="waffles1">Waffles</label>
+                                <input type="checkbox" id="waffles" name="bakery" value="Waffles">
+                                <label for="waffles">Waffles</label>
                             </div>
                         </div>
                     </div>
@@ -341,20 +340,20 @@
                         <div class="section-title">Asian Breakfast (1) Selection</div>
                         <div class="checkbox-grid">
                             <div class="checkbox-item">
-                                <input type="checkbox" id="congee1" name="asian1" value="congee">
-                                <label for="congee1">Congee</label>
+                                <input type="checkbox" id="congee" name="asian" value="Congee">
+                                <label for="congee">Congee</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="rice-noodle1" name="asian1" value="rice-noodle">
-                                <label for="rice-noodle1">Rice Noodle Soup</label>
+                                <input type="checkbox" id="rice-noodle" name="asian" value="Rice Noodle Soup">
+                                <label for="rice-noodle">Rice Noodle Soup</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="miso1" name="asian1" value="miso">
-                                <label for="miso1">Miso Soup</label>
+                                <input type="checkbox" id="miso" name="asian" value="Miso Soup">
+                                <label for="miso">Miso Soup</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="fried-rice1" name="asian1" value="fried-rice">
-                                <label for="fried-rice1">Fried Rice with eggs and vegetable</label>
+                                <input type="checkbox" id="fried-rice" name="asian" value="Fried Rice with eggs and vegetable">
+                                <label for="fried-rice">Fried Rice with eggs and vegetable</label>
                             </div>
                         </div>
                     </div>
@@ -363,24 +362,24 @@
                         <div class="section-title">Wellness</div>
                         <div class="checkbox-grid">
                             <div class="checkbox-item">
-                                <input type="checkbox" id="salmon1" name="wellness1" value="salmon">
-                                <label for="salmon1">Smoked Salmon and avocado</label>
+                                <input type="checkbox" id="salmon" name="wellness" value="Smoked Salmon and avocado">
+                                <label for="salmon">Smoked Salmon and avocado</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="yogurt1" name="wellness1" value="yogurt">
-                                <label for="yogurt1">Yogurt</label>
+                                <input type="checkbox" id="yogurt" name="wellness" value="Yogurt">
+                                <label for="yogurt">Yogurt</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="granola1" name="wellness1" value="granola">
-                                <label for="granola1">Granola</label>
+                                <input type="checkbox" id="granola" name="wellness" value="Granola">
+                                <label for="granola">Granola</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="muesli1" name="wellness1" value="muesli">
-                                <label for="muesli1">Muesli</label>
+                                <input type="checkbox" id="muesli" name="wellness" value="Muesli">
+                                <label for="muesli">Muesli</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="gluten-free1" name="wellness1" value="gluten-free">
-                                <label for="gluten-free1">Gluten free bread</label>
+                                <input type="checkbox" id="gluten-free" name="wellness" value="Gluten free bread">
+                                <label for="gluten-free">Gluten free bread</label>
                             </div>
                         </div>
                     </div>
@@ -389,248 +388,27 @@
                         <div class="section-title">Fruits Juices</div>
                         <div class="checkbox-grid">
                             <div class="checkbox-item">
-                                <input type="checkbox" id="orange-juice1" name="juices1" value="orange">
-                                <label for="orange-juice1">Orange Juice</label>
+                                <input type="checkbox" id="orange-juice" name="juices" value="Orange Juice">
+                                <label for="orange-juice">Orange Juice</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="pineapple-juice1" name="juices1" value="pineapple">
-                                <label for="pineapple-juice1">Pineapple Juice</label>
+                                <input type="checkbox" id="pineapple-juice" name="juices" value="Pineapple Juice">
+                                <label for="pineapple-juice">Pineapple Juice</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="watermelon-juice1" name="juices1" value="watermelon">
-                                <label for="watermelon-juice1">Watermelon Juice</label>
+                                <input type="checkbox" id="watermelon-juice" name="juices" value="Watermelon Juice">
+                                <label for="watermelon-juice">Watermelon Juice</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="green-juice1" name="juices1" value="green">
-                                <label for="green-juice1">Green Juice</label>
+                                <input type="checkbox" id="green-juice" name="juices" value="Green Juice">
+                                <label for="green-juice">Green Juice</label>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="remarks-section">
-                        <label for="remarks1"><strong>Remarks:</strong></label>
-                        <textarea id="remarks1" name="remarks1" placeholder="Any special instructions or dietary requirements..."></textarea>
                     </div>
                     
                     <div class="special-request">
-                        <label for="special1"><strong>Special Request:</strong></label>
-                        <input type="text" id="special1" name="special1" placeholder="Enter any special requests...">
-                    </div>
-                </div>
-                
-                <!-- Second Menu Card -->
-                <div class="menu-card">
-                    <div class="card-header">
-                        <div class="card-number">2</div>
-                        <div class="logo">PANACEA</div>
-                    </div>
-                    
-                    <div class="guest-info">
-                        <input type="date" name="date2" placeholder="Date">
-                        <input type="text" name="villa2" placeholder="Villa">
-                        <input type="time" name="time2" placeholder="Time">
-                    </div>
-                    
-                    <div class="section">
-                        <div class="section-title">Western Breakfast Selection - Eggs any style</div>
-                        <div class="checkbox-grid">
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="poached2" name="eggs2" value="poached">
-                                <label for="poached2">Poached</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="scrambled2" name="eggs2" value="scrambled">
-                                <label for="scrambled2">Scrambled</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="sunny2" name="eggs2" value="sunny">
-                                <label for="sunny2">Sunny Side-Up</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="boiled2" name="eggs2" value="boiled">
-                                <label for="boiled2">Boiled</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="omelet2" name="eggs2" value="omelet">
-                                <label for="omelet2">Omelet</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="benedict2" name="eggs2" value="benedict">
-                                <label for="benedict2">Eggs Benedict</label>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="section">
-                        <div class="section-title">Traditional</div>
-                        <div class="checkbox-grid">
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="bacon2" name="traditional2" value="bacon">
-                                <label for="bacon2">Bacon</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="ham2" name="traditional2" value="ham">
-                                <label for="ham2">Ham</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="sausage2" name="traditional2" value="sausage">
-                                <label for="sausage2">Sausage</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="tomatoes2" name="traditional2" value="tomatoes">
-                                <label for="tomatoes2">Grilled Tomatoes</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="mushrooms2" name="traditional2" value="mushrooms">
-                                <label for="mushrooms2">Mushrooms</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="beans2" name="traditional2" value="beans">
-                                <label for="beans2">Baked Beans</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="potatoes2" name="traditional2" value="potatoes">
-                                <label for="potatoes2">Potatoes</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="plain-pancakes2" name="traditional2" value="plain-pancakes">
-                                <label for="plain-pancakes2">Plain Pancakes</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="banana-pancakes2" name="traditional2" value="banana-pancakes">
-                                <label for="banana-pancakes2">Banana Pancakes</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="french-toast2" name="traditional2" value="french-toast">
-                                <label for="french-toast2">French Toast</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="cheese2" name="traditional2" value="cheese">
-                                <label for="cheese2">Imported hard and soft cheese</label>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="section">
-                        <div class="section-title">Bakery</div>
-                        <div class="checkbox-grid">
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="croissant2" name="bakery2" value="croissant">
-                                <label for="croissant2">Croissant</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="danish2" name="bakery2" value="danish">
-                                <label for="danish2">Danish</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="pain-au-chocolat2" name="bakery2" value="pain-au-chocolat">
-                                <label for="pain-au-chocolat2">Pain Au Chocolat</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="muffins2" name="bakery2" value="muffins">
-                                <label for="muffins2">Fruits and Oat muffins</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="brioche2" name="bakery2" value="brioche">
-                                <label for="brioche2">Brioche Toast</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="whole-wheat2" name="bakery2" value="whole-wheat">
-                                <label for="whole-wheat2">Whole wheat toast</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="multi-grain2" name="bakery2" value="multi-grain">
-                                <label for="multi-grain2">Multi Grain Toast</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="homemade-jams2" name="bakery2" value="homemade-jams">
-                                <label for="homemade-jams2">Homemade Jams</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="waffles2" name="bakery2" value="waffles">
-                                <label for="waffles2">Waffles</label>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="section">
-                        <div class="section-title">Asian Breakfast (1) Selection</div>
-                        <div class="checkbox-grid">
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="congee2" name="asian2" value="congee">
-                                <label for="congee2">Congee</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="rice-noodle2" name="asian2" value="rice-noodle">
-                                <label for="rice-noodle2">Rice Noodle Soup</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="miso2" name="asian2" value="miso">
-                                <label for="miso2">Miso Soup</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="fried-rice2" name="asian2" value="fried-rice">
-                                <label for="fried-rice2">Fried Rice with eggs and vegetable</label>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="section">
-                        <div class="section-title">Wellness</div>
-                        <div class="checkbox-grid">
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="salmon2" name="wellness2" value="salmon">
-                                <label for="salmon2">Smoked Salmon and avocado</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="yogurt2" name="wellness2" value="yogurt">
-                                <label for="yogurt2">Yogurt</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="granola2" name="wellness2" value="granola">
-                                <label for="granola2">Granola</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="muesli2" name="wellness2" value="muesli">
-                                <label for="muesli2">Muesli</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="gluten-free2" name="wellness2" value="gluten-free">
-                                <label for="gluten-free2">Gluten free bread</label>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="section">
-                        <div class="section-title">Fruits Juices</div>
-                        <div class="checkbox-grid">
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="orange-juice2" name="juices2" value="orange">
-                                <label for="orange-juice2">Orange Juice</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="pineapple-juice2" name="juices2" value="pineapple">
-                                <label for="pineapple-juice2">Pineapple Juice</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="watermelon-juice2" name="juices2" value="watermelon">
-                                <label for="watermelon-juice2">Watermelon Juice</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="green-juice2" name="juices2" value="green">
-                                <label for="green-juice2">Green Juice</label>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="remarks-section">
-                        <label for="remarks2"><strong>Remarks:</strong></label>
-                        <textarea id="remarks2" name="remarks2" placeholder="Any special instructions or dietary requirements..."></textarea>
-                    </div>
-                    
-                    <div class="special-request">
-                        <label for="special2"><strong>Special Request:</strong></label>
-                        <input type="text" id="special2" name="special2" placeholder="Enter any special requests...">
+                        <label for="special"><strong>Special Request:</strong></label>
+                        <input type="text" id="special" name="special" placeholder="Enter any special requests...">
                     </div>
                 </div>
             </form>
@@ -643,32 +421,89 @@
 
     <script>
         // Replace this URL with your Google Apps Script Web App URL
-        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyi1_F7VCTvbyYRvCgzgYB5cr4ac6AmlNIgLY6WV84N6l764pHeEOIbIxY6oE-07azM/exec';
+        const GOOGLE_SHEET_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
         
         function submitForm() {
             const form = document.getElementById('breakfastForm');
             const formData = new FormData(form);
             
+            // Check required fields
+            const date = formData.get('date');
+            const firstName = formData.get('firstName');
+            
+            if (!date || !firstName) {
+                alert('Please fill in the required fields: Date and First Name');
+                return;
+            }
+            
             // Prepare data for Google Sheets
             const sheetData = {
                 timestamp: new Date().toISOString(),
-                submissions: []
+                date: date,
+                firstName: firstName,
+                villa: formData.get('villa') || '',
+                time: formData.get('time') || '',
+                eggs: formData.getAll('eggs').join(', '),
+                traditional: formData.getAll('traditional').join(', '),
+                bakery: formData.getAll('bakery').join(', '),
+                asian: formData.getAll('asian').join(', '),
+                wellness: formData.getAll('wellness').join(', '),
+                juices: formData.getAll('juices').join(', '),
+                remarks: formData.get('remarks') || '',
+                special: formData.get('special') || ''
             };
             
-            // Collect data for each guest
-            for (let cardNum = 1; cardNum <= 2; cardNum++) {
-                const date = formData.get(`date${cardNum}`);
-                const villa = formData.get(`villa${cardNum}`);
-                const time = formData.get(`time${cardNum}`);
+            // Show loading state
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+            
+            // Send to Google Sheets (if URL is configured)
+            if (GOOGLE_SHEET_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+                fetch(GOOGLE_SHEET_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(sheetData)
+                })
+                .then(() => {
+                    alert('✅ Breakfast order submitted successfully!');
+                    form.reset();
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('❌ There was an error submitting your order. Please try again.');
+                })
+                .finally(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                });
+            } else {
+                // Show summary if Google Sheets not configured
+                let orderSummary = "BREAKFAST ORDER SUMMARY\\n\\n";
+                orderSummary += `Date: ${sheetData.date}\\n`;
+                orderSummary += `First Name: ${sheetData.firstName}\\n`;
+                if (sheetData.villa) orderSummary += `Villa: ${sheetData.villa}\\n`;
+                if (sheetData.time) orderSummary += `Time: ${sheetData.time}\\n\\n`;
                 
-                if (date || villa || time) {
-                    const guestData = {
-                        guest: cardNum,
-                        date: date || '',
-                        villa: villa || '',
-                        time: time || '',
-                        eggs: formData.getAll(`eggs${cardNum}`).join(', '),
-                        traditional: formData.getAll(`traditional${cardNum}`).join(', '),
-                        bakery: formData.getAll(`bakery${cardNum}`).join(', '),
-                        asian: formData.getAll(`asian${cardNum}`).join(', '),
-                        wellness: formData.getAll(`wellness${car
+                if (sheetData.eggs) orderSummary += `Eggs: ${sheetData.eggs}\\n`;
+                if (sheetData.traditional) orderSummary += `Traditional: ${sheetData.traditional}\\n`;
+                if (sheetData.bakery) orderSummary += `Bakery: ${sheetData.bakery}\\n`;
+                if (sheetData.asian) orderSummary += `Asian: ${sheetData.asian}\\n`;
+                if (sheetData.wellness) orderSummary += `Wellness: ${sheetData.wellness}\\n`;
+                if (sheetData.juices) orderSummary += `Juices: ${sheetData.juices}\\n`;
+                if (sheetData.remarks) orderSummary += `Remarks: ${sheetData.remarks}\\n`;
+                if (sheetData.special) orderSummary += `Special Request: ${sheetData.special}\\n`;
+                
+                alert(orderSummary + "\\n⚠️ Google Sheets integration not configured yet.");
+                
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
