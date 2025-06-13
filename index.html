@@ -165,6 +165,13 @@
             box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
         }
         
+        .submit-btn:disabled {
+            background: #95a5a6;
+            transform: none;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+        
         .logo {
             text-align: right;
             color: #bbb;
@@ -635,34 +642,33 @@
     </div>
 
     <script>
+        // Replace this URL with your Google Apps Script Web App URL
+        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyi1_F7VCTvbyYRvCgzgYB5cr4ac6AmlNIgLY6WV84N6l764pHeEOIbIxY6oE-07azM/exec';
+        
         function submitForm() {
             const form = document.getElementById('breakfastForm');
             const formData = new FormData(form);
             
-            let orderSummary = "BREAKFAST ORDER SUMMARY\\n\\n";
+            // Prepare data for Google Sheets
+            const sheetData = {
+                timestamp: new Date().toISOString(),
+                submissions: []
+            };
             
+            // Collect data for each guest
             for (let cardNum = 1; cardNum <= 2; cardNum++) {
                 const date = formData.get(`date${cardNum}`);
                 const villa = formData.get(`villa${cardNum}`);
                 const time = formData.get(`time${cardNum}`);
                 
                 if (date || villa || time) {
-                    orderSummary += `--- Guest ${cardNum} ---\\n`;
-                    if (date) orderSummary += `Date: ${date}\\n`;
-                    if (villa) orderSummary += `Villa: ${villa}\\n`;
-                    if (time) orderSummary += `Time: ${time}\\n`;
-                    
-                    const categories = ['eggs', 'traditional', 'bakery', 'asian', 'wellness', 'juices'];
-                    categories.forEach(category => {
-                        const items = formData.getAll(`${category}${cardNum}`);
-                        if (items.length > 0) {
-                            orderSummary += `${category.charAt(0).toUpperCase() + category.slice(1)}: ${items.join(', ')}\\n`;
-                        }
-                    });
-                    
-                    const remarks = formData.get(`remarks${cardNum}`);
-                    const special = formData.get(`special${cardNum}`);
-                    
-                    if (remarks) orderSummary += `Remarks: ${remarks}\\n`;
-                    if (special) orderSummary += `Special Request: ${special}\\n`;
-                    orderSummary
+                    const guestData = {
+                        guest: cardNum,
+                        date: date || '',
+                        villa: villa || '',
+                        time: time || '',
+                        eggs: formData.getAll(`eggs${cardNum}`).join(', '),
+                        traditional: formData.getAll(`traditional${cardNum}`).join(', '),
+                        bakery: formData.getAll(`bakery${cardNum}`).join(', '),
+                        asian: formData.getAll(`asian${cardNum}`).join(', '),
+                        wellness: formData.getAll(`wellness${car
