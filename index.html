@@ -421,7 +421,7 @@
 
     <script>
         // Replace this URL with your Google Apps Script Web App URL
-        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyi1_F7VCTvbyYRvCgzgYB5cr4ac6AmlNIgLY6WV84N6l764pHeEOIbIxY6oE-07azM/exec';
+        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwN7A8hSpCcsHNFP2Dzed4rzxgQX24Abc3oH_eL6WBn8KNiENQd8_v5YlahS42YFqN8/exec';
         
         function submitForm() {
             const form = document.getElementById('breakfastForm');
@@ -460,7 +460,7 @@
             submitBtn.disabled = true;
             
             // Send to Google Sheets (if URL is configured)
-            if (GOOGLE_SHEET_URL !== 'https://script.google.com/macros/s/AKfycbyi1_F7VCTvbyYRvCgzgYB5cr4ac6AmlNIgLY6WV84N6l764pHeEOIbIxY6oE-07azM/exec') {
+            if (GOOGLE_SHEET_URL !== 'https://script.google.com/macros/s/AKfycbwN7A8hSpCcsHNFP2Dzed4rzxgQX24Abc3oH_eL6WBn8KNiENQd8_v5YlahS42YFqN8/exec') {
                 fetch(GOOGLE_SHEET_URL, {
                     method: 'POST',
                     mode: 'no-cors',
