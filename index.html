@@ -547,48 +547,27 @@
             submitBtn.textContent = 'Submitting...';
             submitBtn.disabled = true;
             
-            // Send to Google Sheets (if URL is configured)
-            if (GOOGLE_SHEET_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
-                fetch(GOOGLE_SHEET_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(sheetData)
-                })
-                .then(() => {
-                    alert('✅ Breakfast order submitted successfully!');
-                    form.reset();
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                    alert('❌ There was an error submitting your order. Please try again.');
-                })
-                .finally(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                });
-            } else {
-                // Show summary if Google Sheets not configured
-                let orderSummary = "BREAKFAST ORDER SUMMARY\\n\\n";
-                orderSummary += `Date: ${sheetData.date}\\n`;
-                orderSummary += `First Name: ${sheetData.firstName}\\n\\n`;
-                
-                if (sheetData.eggs) orderSummary += `Eggs: ${sheetData.eggs}\\n`;
-                if (sheetData.traditional) orderSummary += `Traditional: ${sheetData.traditional}\\n`;
-                if (sheetData.bakery) orderSummary += `Bakery: ${sheetData.bakery}\\n`;
-                if (sheetData.asian) orderSummary += `Asian: ${sheetData.asian}\\n`;
-                if (sheetData.wellness) orderSummary += `Wellness: ${sheetData.wellness}\\n`;
-                if (sheetData.juices) orderSummary += `Juices: ${sheetData.juices}\\n`;
-                if (sheetData.remarks) orderSummary += `Remarks: ${sheetData.remarks}\\n`;
-                if (sheetData.special) orderSummary += `Special Request: ${sheetData.special}\\n`;
-                
-                alert(orderSummary + "\\n⚠️ Google Sheets integration not configured yet.");
-                
+            // Send to Google Sheets
+            fetch(GOOGLE_SHEET_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(sheetData)
+            })
+            .then(() => {
+                alert('✅ Breakfast order submitted successfully!');
+                form.reset();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('❌ There was an error submitting your order. Please try again.');
+            })
+            .finally(() => {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-            }
+            });
         }
     </script>
 </body>
